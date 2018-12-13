@@ -1,0 +1,5 @@
+bitcoind/bitcoin_data/*
+!bitcoind/bitcoin_data/.gitkeep 
+
+lnd/lnd_data/*
+!lnd/lnd_data/.gitkeep
