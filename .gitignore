@@ -3,3 +3,9 @@ bitcoind/bitcoin_data/*
 
 lnd/lnd_data/*
 !lnd/lnd_data/.gitkeep
+
+rethink/rethink_data/*
+!rethink/rethink_data/.gitkeep
+
+ao/ao_data/*
+!ao/ao_data/.gitkeep

@@ -26,3 +26,33 @@ services:
         restart: always
         entrypoint: ["./start-lnd.sh"]
 
+
+    # Runs rethinkdb.
+    rethink_service:
+        image: rethink_image
+        build:
+            context: rethink/
+        container_name: rethink_container
+        volumes:
+            - ./rethink/rethink_data:/root/.rethink
+        depends_on:
+            - bitcoind_service
+            - lnd_service
+        restart: always
+        entrypoint: ["./start-rethink.sh"]
+
+
+    # Runs AO.
+    ao_service:
+        image: ao_image
+        build:
+            context: ao/
+        container_name: ao_container
+        volumes:
+            - ./lnd/lnd_data:/root/.lnd
+        depends_on:
+            - bitcoind_service
+            - lnd_service
+            - rethink_service
+        restart: always
+        entrypoint: ["./start-ao.sh"]
